@@ -80,7 +80,7 @@ namespace lesson_01
             {
                 Console.Write($", {list[i]}");
             }
-            Console.WriteLine(" ]");
+            Console.Write(" ]");
         }
 
         static double sum(double[] list)
@@ -112,13 +112,50 @@ namespace lesson_01
 
             return sum / lst.Length;
         }
-        static double quadratic(double[] list)
+
+        static double power(double num, double pow)
         {
-            if list.Length < 4
+            for (int i = 1; i < pow+1; i++)
+            {
+                num *= num;
+            }
+            return num;
+        }
+
+        static void quadratic(double[] list)
+        {
+            if (list.Length < 4)
             {
                 double disc = list[1] * list[1] - 4 * list[0] * list[2];
-                double 
+                double root = power(disc, 0.5); //Math.Pow(disc, 0.5)
+
+                if (list[0] == 0)
+                {
+                    Console.Write("not quadratic equation");
+                }
+                else if (disc > 0)
+                {
+                    Console.Write("real and different roots ");
+                    Console.Write((-list[1] + root) / (2 * list[0]));
+                    Console.Write((-list[1] - root) / (2 * list[0]));
+                }
+                else if (disc == 0)
+                {
+                    Console.Write("real and same roots");
+                    Console.Write(-list[1] / (2 * list[0]));
+                }
+                else
+                {
+                    Console.Write("Complea Roots");
+                    Console.Write($"\n{-list[1] / (2 * list[0])} + i {root}");
+                    Console.Write($"\n{-list[1] / (2 * list[0])} - i {root}");
+                }
             }
+            else
+            {
+                Console.WriteLine("list must be 3");
+            }
+
         }
 
         static void Main(string[] args)
@@ -140,12 +177,18 @@ namespace lesson_01
             double a = avg(distances);
             Console.WriteLine($"avg = {a}");
             double[] w = { 1.1, 3.0, 5.2 };
-
+            double[] o = {5.1, 3.6, 9.7}; // quadratic problem
+            
+            
             print(w);
+
             double k = sum(distances);
             Console.WriteLine($"the sum is {k}");
 
-            Console.WriteLine("Finish");
+            Console.WriteLine("---------------------------");
+            quadratic(o);
+
+            Console.WriteLine("\nFinish");
         }
     }
 }
