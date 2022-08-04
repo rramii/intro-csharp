@@ -83,6 +83,14 @@ namespace lesson_01
             Console.Write(" ]");
         }
 
+        static void squareprint(double[,] list)
+        {
+            foreach (int i in list)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
         static double sum(double[] list)
         {
 
@@ -104,11 +112,24 @@ namespace lesson_01
 
         static void println(int[] list)
         {
-            for (int i = 0; i < list.Length; i++)
+            if (list is null)
             {
-                Console.Write($"{list[i]}, ");
+                Console.WriteLine("Nothing");
+                return;
             }
-            Console.WriteLine();
+
+            Console.Write("[ ");
+
+            if (list.Length > 0)
+            {
+                Console.Write($"{list[0]}");
+            }
+
+            for (int i = 1; i < list.Length; i++)
+            {
+                Console.Write($", {list[i]}");
+            }
+            Console.Write(" ]");
         }
 
         static double avg(double[] lst)
@@ -135,7 +156,7 @@ namespace lesson_01
             if (list.Length == 3)
             {
                 double disc = list[1] * list[1] - 4 * list[0] * list[2];
-                double root = power(disc, 0.5); //Math.Pow(disc, 0.5)
+                double root = power(disc, 0.5); //math.Pow(disc, 0.5)
                 double solve1 = (-list[1] + root) / (2 * list[0]);
                 double solve2 = (-list[1] - root) / (2 * list[0]);
                 double solve3 = -list[1] / (2 * list[0]);
@@ -168,6 +189,33 @@ namespace lesson_01
             }
 
         }
+        
+        static bool magic_square_checker(double[,] square)
+        {
+            double sums = 0;
+
+            for (int i = 0; i < square.Length; i++)
+            {
+                sums = sums + square[i, i];
+            }
+
+            for (int i = 0; i < square.Length; i++)
+            {
+
+                double row = 0;
+                double colm = 0;
+
+                for (int j = 0; j < square.Length; j++)
+                {
+                    row += square[i, j];
+                    colm += square[j, i];
+                }
+                if (row != colm || colm != sums)
+                    return false;
+            }
+
+            return true;
+        }
 
         static void Main(string[] args)
         {
@@ -189,8 +237,8 @@ namespace lesson_01
             Console.WriteLine($"avg = {a}");
             double[] w = { 1.1, 3.0, 5.2 };
             double[] o = {5.1, 3.6, 9.7}; // quadratic problem
-            
-            
+            double[,] square = new double[3, 3] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
             print(w);
 
             double k = sum(distances);
@@ -198,7 +246,9 @@ namespace lesson_01
 
             Console.WriteLine("---------------------------");
             quadratic(o);
-
+            Console.WriteLine("---------------------------");
+            squareprint(square);
+            magic_square_checker(square);
             Console.WriteLine("\nFinish");
         }
     }
