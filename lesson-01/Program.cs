@@ -112,6 +112,7 @@ namespace lesson_01
                 System.Console.WriteLine();
             }
         }
+
         static double sum(double[] list)
         {
 
@@ -131,7 +132,7 @@ namespace lesson_01
             return summary;
         }
 
-        static void println(int[] list)
+        static void print(int[] list)
         {
             if (list is null)
             {
@@ -213,32 +214,44 @@ namespace lesson_01
         
         static bool magic_square_checker(double[,] square)
         {
-            double sums = 0;
-            double root = Math.Sqrt(square.Length);
+            double lng = square.GetLength(0);
+            double[] a = diag_checker(square);
 
-            for (int i = 0; i < root; i++)
-            {
-                sums = sums + square[i, i];
-            }
-
-            for (int i = 0; i < root; i++)
+            for (int i = 0; i < lng; i++)
             {
 
                 double row = 0;
                 double colm = 0;
 
-                for (int j = 0; j < root; j++)
+                for (int j = 0; j < lng; j++)
                 {
                     row += square[i, j];
                     colm += square[j, i];
                 }
-                if (row != colm || colm != sums)
+                foreach (int k in a)
                 {
-                    return false;
+                    if (row != colm || colm != k)
+                    {
+                        return false;
+                    }
                 }
             }
 
             return true;
+        }
+        
+        static double[] diag_checker(double[,] square)
+        {
+            double sum1 = 0.0;
+            double sum2 = 0.0;
+            double root = 0;
+            for (int i = 0; i < root; i++)
+            {
+                sum1 = sum1 + square[i, i];
+                sum2 = sum2 + square[i, square.GetLength(0) - 1 -i];
+            }
+            double[] a = { sum1, sum2 };
+            return a;
         }
 
         static void Main(string[] args)
@@ -250,10 +263,10 @@ namespace lesson_01
             int[] prime_numbers = { 1, 3, 5, 7, 11, 13 };
             Console.WriteLine($"array of length = {prime_numbers.Length}");
 
-            println(prime_numbers);
+            print(prime_numbers);
 
             prime_numbers[0] = 2;
-            println(prime_numbers);
+            print(prime_numbers);
 
 
             double[] distances = { 3.1, 823.9, 12.8, 9.213, 72.5 };
