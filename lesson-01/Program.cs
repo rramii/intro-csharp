@@ -83,7 +83,7 @@ namespace lesson_01
             Console.Write(" ]");
         }
 
-        static void pprint(double[,] matrix)
+        static void pprint(int[,] matrix)
         {
             Console.WriteLine("{");
             for (int i = 0; i < matrix.GetLength(0); i++)
@@ -101,7 +101,7 @@ namespace lesson_01
             Console.WriteLine("}");
         }
 
-        static void pprint(double[][] matrix)
+        static void pprint(int[][] matrix)
         {
             for (int n = 0; n < matrix.Length; n++)
             {
@@ -212,16 +212,16 @@ namespace lesson_01
 
         }
         
-        static bool magic_square_checker(double[,] square)
+        static bool magic_square_checker(int[,] square)
         {
-            double lng = square.GetLength(0);
-            double[] a = diag_checker(square);
+            int lng = square.GetLength(0);
+            int[] a = diag_checker(square);
 
             for (int i = 0; i < lng; i++)
             {
 
-                double row = 0;
-                double colm = 0;
+                int row = 0;
+                int colm = 0;
 
                 for (int j = 0; j < lng; j++)
                 {
@@ -240,17 +240,17 @@ namespace lesson_01
             return true;
         }
         
-        static double[] diag_checker(double[,] square)
+        static int[] diag_checker(int[,] square)
         {
-            double sum1 = 0.0;
-            double sum2 = 0.0;
-            double root = 0;
+            int sum1 = 0;
+            int sum2 = 0;
+            int root = 0;
             for (int i = 0; i < root; i++)
             {
                 sum1 = sum1 + square[i, i];
                 sum2 = sum2 + square[i, square.GetLength(0) - 1 -i];
             }
-            double[] a = { sum1, sum2 };
+            int[] a = { sum1, sum2 };
             return a;
         }
 
@@ -274,13 +274,13 @@ namespace lesson_01
             Console.WriteLine($"avg = {a}");
             double[] w = { 1.1, 3.0, 5.2 };
             double[] o = {5.1, 3.6, 9.7}; // quadratic problem
-            double[,] square1 = new double[3, 3] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+            int[,] square1 = new int[3, 3] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
             
-            double[][] square2 = new double[3][] 
+            int[][] square2 = new int[3][] 
             {
-                new double[] { 1, 2, 3 },
-                new double[] { 4, 5, 6 },
-                new double[] { 7, 8, 9 }
+                new int[] { 1, 2, 3 },
+                new int[] { 4, 5, 6 },
+                new int[] { 7, 8, 9 }
             };
 
             print(w);
