@@ -3,19 +3,19 @@ namespace lesson_01
 {
     internal class Program
     {
-        static void variables()
+        /*static void variables()
         {
-            //sbyte bite = 127;          // -128..127
+            sbyte bite = 127;          // -128..127
 
 
-            // negative and positive
-            //short hair = -32768;       // -32768..0..+32767
-            //int number = 31415;
-            //long many = 3476378967867345;
-            //number = 781;
+             negative and positive
+            short hair = -32768;       // -32768..0..+32767
+            int number = 31415;
+            long many = 3476378967867345;
+            number = 781;
 
-            //double distance_to_pluto = 5.91E11;
-            //double au = 1.49e11;
+            double distance_to_pluto = 5.91E11;
+            double au = 1.49e11;
 
             double distance_london_hafia = 4.352_380e123;
 
@@ -26,15 +26,15 @@ namespace lesson_01
             Console.WriteLine($"{distance_london_hafia == r}");
 
 
-            // positive
-            //byte chips = 255;
-            //ushort tail = 65_535;  // 0..2^16 - 1
-            //uint ger = 4294967295;  // 0..2^32 - 1     
-            //ulong life = 18_446_744_073_709_551_615; // 0..2^63-1
+            positive
+            byte chips = 255;
+            ushort tail = 65_535;  // 0..2^16 - 1
+            uint ger = 4294967295;  // 0..2^32 - 1     
+            ulong life = 18_446_744_073_709_551_615; // 0..2^63-1
 
-        }
+        }*/
 
-        static void chars()
+        /*static void chars()
         {
             Console.WriteLine(4_300);
             int x = 72;
@@ -54,7 +54,7 @@ namespace lesson_01
 
             string message = "hello world!  😀 😷";
             Console.WriteLine(message);
-        }
+        }*/
 
         static int average(int x, int y, int z)
         {
@@ -83,14 +83,35 @@ namespace lesson_01
             Console.Write(" ]");
         }
 
-        static void squareprint(double[,] list)
+        static void pprint(double[,] matrix)
         {
-            foreach (int i in list)
+            Console.WriteLine("{");
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                Console.WriteLine(i);
+                if (matrix.GetLength(1) > 0)
+                {
+                    Console.Write($" [ {matrix[i, 0]}");
+                }
+                for (int j = 1; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write($", {matrix[i, j]}");
+                }
+                Console.WriteLine(" ]");
             }
+            Console.WriteLine("}");
         }
 
+        static void pprint(double[][] matrix)
+        {
+            for (int n = 0; n < matrix.Length; n++)
+            {
+                for (int k = 0; k < matrix[n].Length; k++)
+                {
+                    System.Console.Write(matrix[n][k]);
+                }
+                System.Console.WriteLine();
+            }
+        }
         static double sum(double[] list)
         {
 
@@ -193,25 +214,28 @@ namespace lesson_01
         static bool magic_square_checker(double[,] square)
         {
             double sums = 0;
+            double root = Math.Sqrt(square.Length);
 
-            for (int i = 0; i < square.Length; i++)
+            for (int i = 0; i < root; i++)
             {
                 sums = sums + square[i, i];
             }
 
-            for (int i = 0; i < square.Length; i++)
+            for (int i = 0; i < root; i++)
             {
 
                 double row = 0;
                 double colm = 0;
 
-                for (int j = 0; j < square.Length; j++)
+                for (int j = 0; j < root; j++)
                 {
                     row += square[i, j];
                     colm += square[j, i];
                 }
                 if (row != colm || colm != sums)
+                {
                     return false;
+                }
             }
 
             return true;
@@ -237,7 +261,14 @@ namespace lesson_01
             Console.WriteLine($"avg = {a}");
             double[] w = { 1.1, 3.0, 5.2 };
             double[] o = {5.1, 3.6, 9.7}; // quadratic problem
-            double[,] square = new double[3, 3] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+            double[,] square1 = new double[3, 3] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+            
+            double[][] square2 = new double[3][] 
+            {
+                new double[] { 1, 2, 3 },
+                new double[] { 4, 5, 6 },
+                new double[] { 7, 8, 9 }
+            };
 
             print(w);
 
@@ -247,8 +278,14 @@ namespace lesson_01
             Console.WriteLine("---------------------------");
             quadratic(o);
             Console.WriteLine("---------------------------");
-            squareprint(square);
-            magic_square_checker(square);
+
+            pprint(square1);
+            Console.WriteLine(magic_square_checker(square1));
+
+            Console.WriteLine("---------------------------");
+            pprint(square2);
+            Console.WriteLine("---------------------------");
+
             Console.WriteLine("\nFinish");
         }
     }
