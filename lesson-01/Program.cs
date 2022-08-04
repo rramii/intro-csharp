@@ -5,17 +5,17 @@ namespace lesson_01
     {
         static void variables()
         {
-            sbyte bite = 127;          // -128..127
+            //sbyte bite = 127;          // -128..127
 
 
             // negative and positive
-            short hair = -32768;       // -32768..0..+32767
-            int number = 31415;
-            long many = 3476378967867345;
-            number = 781;
+            //short hair = -32768;       // -32768..0..+32767
+            //int number = 31415;
+            //long many = 3476378967867345;
+            //number = 781;
 
-            double distance_to_pluto = 5.91E11;
-            double au = 1.49e11;
+            //double distance_to_pluto = 5.91E11;
+            //double au = 1.49e11;
 
             double distance_london_hafia = 4.352_380e123;
 
@@ -27,10 +27,10 @@ namespace lesson_01
 
 
             // positive
-            byte chips = 255;
-            ushort tail = 65_535;  // 0..2^16 - 1
-            uint ger = 4294967295;  // 0..2^32 - 1     
-            ulong life = 18_446_744_073_709_551_615; // 0..2^63-1
+            //byte chips = 255;
+            //ushort tail = 65_535;  // 0..2^16 - 1
+            //uint ger = 4294967295;  // 0..2^32 - 1     
+            //ulong life = 18_446_744_073_709_551_615; // 0..2^63-1
 
         }
 
@@ -113,21 +113,12 @@ namespace lesson_01
 
         static double avg(double[] lst)
         {
-            double sum = 0.0;
             if (lst.Length == 0.0)
             {
                 Console.Write("list is empty");
             }
 
-            else
-            {
-                for (int i = 0; i < lst.Length; i++)
-                {
-                    sum += lst[i];
-                }
-            }
-
-            return sum / lst.Length;
+            return sum(lst) / lst.Length;
         }
 
         static double power(double num, double pow)
@@ -145,27 +136,30 @@ namespace lesson_01
             {
                 double disc = list[1] * list[1] - 4 * list[0] * list[2];
                 double root = power(disc, 0.5); //Math.Pow(disc, 0.5)
+                double solve1 = (-list[1] + root) / (2 * list[0]);
+                double solve2 = (-list[1] - root) / (2 * list[0]);
+                double solve3 = -list[1] / (2 * list[0]);
 
                 if (list[0] == 0)
                 {
-                    Console.Write("not quadratic equation");
+                    Console.WriteLine("not quadratic equation");
                 }
                 else if (disc > 0)
-                {
-                    Console.Write("real and different roots ");
-                    Console.Write((-list[1] + root) / (2 * list[0]));
-                    Console.Write((-list[1] - root) / (2 * list[0]));
+                { 
+                    Console.WriteLine("real and different roots ");
+                    Console.WriteLine(solve1);
+                    Console.WriteLine(solve2);
                 }
                 else if (disc == 0)
                 {
-                    Console.Write("real and same roots");
-                    Console.Write(-list[1] / (2 * list[0]));
+                    Console.WriteLine("real and same roots");
+                    Console.WriteLine(solve3);
                 }
                 else
                 {
-                    Console.Write("Complea Roots");
-                    Console.Write($"\n{-list[1] / (2 * list[0])} + i {root}");
-                    Console.Write($"\n{-list[1] / (2 * list[0])} - i {root}");
+                    Console.WriteLine("Complea Roots");
+                    Console.WriteLine($"{solve3} + i {root}");
+                    Console.WriteLine($"{solve3} - i {root}");
                 }
             }
             else
