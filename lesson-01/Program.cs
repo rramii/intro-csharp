@@ -85,10 +85,19 @@ namespace lesson_01
 
         static double sum(double[] list)
         {
+
             double summary = 0.0;
-            for (int i = 0; i < list.Length; i++)
+            if (list.Length == 0.0)
             {
-                summary += list[i];
+                Console.Write("list is empty");
+            }
+
+            else
+            {
+                for (int i = 0; i < list.Length; i++)
+                {
+                    summary += list[i];
+                }
             }
             return summary;
         }
@@ -105,9 +114,17 @@ namespace lesson_01
         static double avg(double[] lst)
         {
             double sum = 0.0;
-            for (int i = 0; i < lst.Length; i++)
+            if (lst.Length == 0.0)
             {
-                sum += lst[i];
+                Console.Write("list is empty");
+            }
+
+            else
+            {
+                for (int i = 0; i < lst.Length; i++)
+                {
+                    sum += lst[i];
+                }
             }
 
             return sum / lst.Length;
@@ -124,7 +141,7 @@ namespace lesson_01
 
         static void quadratic(double[] list)
         {
-            if (list.Length < 4)
+            if (list.Length == 3)
             {
                 double disc = list[1] * list[1] - 4 * list[0] * list[2];
                 double root = power(disc, 0.5); //Math.Pow(disc, 0.5)
