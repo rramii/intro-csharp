@@ -64,7 +64,6 @@
                             string cel = "_";
                         }
                     }
-
                 }
             }
             pprint(cells);
