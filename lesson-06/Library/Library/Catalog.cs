@@ -9,6 +9,8 @@ namespace Library
     public class Catalog
     {
         private Dictionary<string, Book> _catalogIsbn = new();
+        private Dictionary<string, Book> _catalogBooks = new();
+        private Dictionary<string , Book> _catalogAurthor = new();
 
         //public int Count { get { return _catalog.Count; } }
         public int Count => _catalogIsbn.Count;
@@ -19,6 +21,10 @@ namespace Library
             //_catalog[book.Isbn] = book;
         }
 
+        public void add(Person Aurthor)
+        {
+            _catalogAurthor.Add(Aurthor.Id, Aurthor)
+        }
 
         public bool TryAdd(Book book)
         {
@@ -74,5 +80,9 @@ namespace Library
             return lst;
         }
 
+        public List<Book> FindByAurthor(string aurthor)
+        {
+            foreach (var item in _catalogauthor)
+        }
     }
 }

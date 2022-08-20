@@ -66,6 +66,8 @@
             }
 
             Console.WriteLine("----------------------------");
+
+            var idk = c.FindByAurthor
             lst = c.FindByTitleContains("Jedi");
             Console.WriteLine($"found {lst.Count} books containing Jedi");
             foreach (var item in lst)
