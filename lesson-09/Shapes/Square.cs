@@ -15,11 +15,16 @@ namespace Shapes
             _side = side;
         }
 
-        public override string Name => "SquarePants";
+        public override string Name => "Square";
+        public override string Dimensions => "2 dimentions";
 
         public override double Area()
         {
             return _side * _side;
+        }
+        public override void Scale(double factor)
+        {
+            _side = _side * factor;
         }
     }
 }

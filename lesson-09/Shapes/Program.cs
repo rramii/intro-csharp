@@ -1,6 +1,6 @@
 ﻿namespace Shapes
 {
-    
+
     internal class Program
     {
         static void PaintPrice(AbstractShape shape)
@@ -11,7 +11,7 @@
             //var price = vol * priceForLiter;
             //Console.WriteLine($"paint {shape.Name} will cost {price}");
 
-            Console.WriteLine($"paint {shape.Name} will cost {shape.PaintVolume(0.01) * priceForLiter}");
+            Console.WriteLine($"paint {shape.Name}--{shape.Dimensions} will cost {shape.PaintVolume(0.01) * priceForLiter}");
         }
 
         static void Paint(List<AbstractShape> lst)
@@ -21,17 +21,41 @@
                 PaintPrice(shape);
             }
         }
+
+        static void dictionarybuilder(List<AbstractShape> lst)
+        {
+            Dictionary<string, List<AbstractShape>> _list = new Dictionary<string, List<AbstractShape>>();
+            List<AbstractShape> list = lst;
+            foreach (var shape in lst)
+            {
+                if (shape.Name == "Circle")
+                {
+                    _list.Add(shape.Name, list.Add(shape));
+                }
+                else if (shape.Name == "square")
+                {
+
+                }
+            }
+        }
+
         static void Main(string[] args)
         {           
-            var s = new Square(4);
-            PaintPrice(s);
+            var sq = new Square(4);
+            PaintPrice(sq);
 
             var c = new Circle(4);
             PaintPrice(c);
 
+            var r = new Ring(1.2, 4);
+            PaintPrice(r);
+
+            var sp = new Sphere(4);
+            PaintPrice(sp);
             Console.WriteLine("-------------------------");
             var shapes = new List<AbstractShape>() { new Circle(3), new Square(4), new Circle(5) };
             Paint(shapes);
+            dictionarybuilder(shapes);
         }
     }
 }

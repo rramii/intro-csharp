@@ -15,11 +15,18 @@ namespace Shapes
             _radius = radius;
         }
 
-        public override string Name => "Circlular Shape";
-
+        public override string Name => "Circle";
+        public override string Dimensions => "2 dimentions";
+        
         public override double Area()
         {
             return Math.PI * _radius * _radius;            
         }
+
+        public override void Scale(double factor)
+        {
+            _radius = _radius * factor;
+        }
+
     }
 }
