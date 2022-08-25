@@ -21,11 +21,11 @@ namespace Shapes
         public override double Area()
         {
             var c = new Circle(_rad);
-            return c.Area()*4;
+            return 4 * c.Area();
         }
         public override void Scale(double factor)
         {
-            _rad = _rad * factor;
-        }
+            _rad *= factor;
+        }        
     }
 }

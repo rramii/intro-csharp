@@ -3,7 +3,7 @@
 
     internal class Program
     {
-        static void PaintPrice(AbstractShape shape, double thickness = 0.01)
+        static double PaintPrice(AbstractShape shape, double thickness = 0.01)
         {
             var priceForLiter = 1337.0;
             //var surface = shape.Area();
@@ -16,33 +16,35 @@
             Console.WriteLine($"paint {shape.Name}--{shape.Dimensions} will cost {cost}");
         }
 
-        static void Paint(List<AbstractShape> lst)
+        static double Paint(List<AbstractShape> lst)
         {
+            double total = 0;
             foreach (var shape in lst)
             {
-                PaintPrice(shape);
+                total += PaintPrice(shape);
             }
+            return total;
         }
 
-        static void dictionarybuilder(List<AbstractShape> lst)
+        static Dictionary<string, List<AbstractShape>> dictionarybuilder(List<AbstractShape> shapes)
         {
-            Dictionary<string, List<AbstractShape>> _list = new Dictionary<string, List<AbstractShape>>();
-            var sortlist = new List<AbstractShape>();
-            foreach (var shape in lst)
+            var dict = new Dictionary<string, List<AbstractShape>>();
+                        
+            foreach (var shape in shapes)
             {
-                if (shape.Name == "Circle")
+                var key = shape.Name;
+                if( dict.ContainsKey(key))
                 {
-                    sortlist.Add(shape);
-                    if ()
-                    {
-                        _list.Add(shape.Name, sortlist);
-                    }
+                    dict[key].Add(shape);
                 }
-                else if (shape.Name == "square")
+                else
                 {
-
+                    var list = new List<AbstractShape>() { shape };
+                    dict.Add(key, list);
                 }
             }
+
+            return dict; 
         }
 
         static void Main(string[] args)
@@ -59,9 +61,16 @@
             var sp = new Sphere(4);
             PaintPrice(sp);
             Console.WriteLine("-------------------------");
-            var shapes = new List<AbstractShape>() { new Circle(3), new Square(4), new Circle(5) };
+            var shapes = new List<AbstractShape>() { 
+                new Circle(3), new Square(4), new Circle(5), new Circle(3), new Ring(5, 6) 
+            };
+
             Paint(shapes);
-            dictionarybuilder(shapes);
+
+            Console.WriteLine("-------------------------");
+            var dict = dictionarybuilder(shapes);
+
+            Paint(dict["Circle"]);
         }
     }
 }

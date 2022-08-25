@@ -31,8 +31,8 @@ namespace Shapes
 
         public override void Scale(double factor)
         {
-            _inner = _inner * factor;
-            _outer = _outer * factor;
+            _inner *= factor;
+            _outer *= factor;
         }
     }
 }

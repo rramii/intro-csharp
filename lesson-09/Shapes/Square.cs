@@ -24,7 +24,7 @@ namespace Shapes
         }
         public override void Scale(double factor)
         {
-            _side = _side * factor;
+            _side *= factor;
         }
     }
 }
