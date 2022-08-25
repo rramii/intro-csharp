@@ -3,7 +3,7 @@
 
     internal class Program
     {
-        static void PaintPrice(AbstractShape shape)
+        static void PaintPrice(AbstractShape shape, double thickness = 0.01)
         {
             var priceForLiter = 1337.0;
             //var surface = shape.Area();
@@ -11,7 +11,9 @@
             //var price = vol * priceForLiter;
             //Console.WriteLine($"paint {shape.Name} will cost {price}");
 
-            Console.WriteLine($"paint {shape.Name}--{shape.Dimensions} will cost {shape.PaintVolume(0.01) * priceForLiter}");
+            var Volume = shape.Area() * thickness;
+            var cost = Volume * priceForLiter;
+            Console.WriteLine($"paint {shape.Name}--{shape.Dimensions} will cost {cost}");
         }
 
         static void Paint(List<AbstractShape> lst)
@@ -51,7 +53,7 @@
             var c = new Circle(4);
             PaintPrice(c);
 
-            var r = new Ring(1.2, 4);
+            var r = new Ring(2.6, 4);
             PaintPrice(r);
 
             var sp = new Sphere(4);
