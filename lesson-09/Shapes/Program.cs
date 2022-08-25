@@ -11,9 +11,10 @@
             //var price = vol * priceForLiter;
             //Console.WriteLine($"paint {shape.Name} will cost {price}");
 
-            var Volume = shape.Area() * thickness;
-            var cost = Volume * priceForLiter;
+            var volume = shape.Area() * thickness;
+            var cost = volume * priceForLiter;
             Console.WriteLine($"paint {shape.Name}--{shape.Dimensions} will cost {cost}");
+            return cost;
         }
 
         static double Paint(List<AbstractShape> lst)

@@ -12,6 +12,5 @@ namespace Shapes
         public abstract double Area();
         public abstract void Scale(double factor);
         public abstract string Dimensions { get; }
-
     }
 }
