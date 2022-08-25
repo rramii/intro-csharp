@@ -3,7 +3,7 @@
 
     internal class Program
     {
-        static void PaintPrice(AbstractShape shape)
+        static double PaintPrice(AbstractShape shape, double thickness = 0.01)
         {
             var priceForLiter = 1337.0;
             //var surface = shape.Area();
@@ -11,15 +11,20 @@
             //var price = vol * priceForLiter;
             //Console.WriteLine($"paint {shape.Name} will cost {price}");
 
-            Console.WriteLine($"paint {shape.Name}--{shape.Dimensions} will cost {shape.PaintVolume(0.01) * priceForLiter}");
+            var volume = shape.Area() * thickness;
+            var cost = volume * priceForLiter;
+            Console.WriteLine($"paint {shape.Name}--{shape.Dimensions} will cost {cost}");
+            return cost;
         }
 
-        static void Paint(List<AbstractShape> lst)
+        static double Paint(List<AbstractShape> lst)
         {
+            double total = 0;
             foreach (var shape in lst)
             {
-                PaintPrice(shape);
+                total += PaintPrice(shape);
             }
+            return total;
         }
 
         static void dictionarybuilder(List<AbstractShape> lst)
