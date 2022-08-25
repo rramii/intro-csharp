@@ -30,12 +30,16 @@
         static void dictionarybuilder(List<AbstractShape> lst)
         {
             Dictionary<string, List<AbstractShape>> _list = new Dictionary<string, List<AbstractShape>>();
-            List<AbstractShape> list = lst;
+            var sortlist = new List<AbstractShape>();
             foreach (var shape in lst)
             {
                 if (shape.Name == "Circle")
                 {
-                    _list.Add(shape.Name, list.Add(shape));
+                    sortlist.Add(shape);
+                    if ()
+                    {
+                        _list.Add(shape.Name, sortlist);
+                    }
                 }
                 else if (shape.Name == "square")
                 {
