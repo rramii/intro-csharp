@@ -17,10 +17,12 @@
 
         private static void Print(SortedList sl)
         {
+            List<int> new_list = new List<int>();
             for (int i = 0; i < sl.Count(); i++)
             {
-                Console.WriteLine($"{sl.Get(i)}, ");
+                new_list.Append(i);
             }
+            SortedList.Sorting(new_list);
         }
 
         private static void Fill(SortedList sl, int n)
