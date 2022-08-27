@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace lesson_10
 {
-    internal interface Interface
+    internal interface SortedContainer
     {
         double Max();
         double Min();
-        double Count();
+        int Count();
 
-        double Add(double x);
-        double Remove(double x);
-        double[] Get(double[] index);
+        bool Add(double x);
+        bool Remove(double x);
+
+        double Get(int index);
     }
 }

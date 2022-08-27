@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace lesson_10
 {
-    internal class SortedArray : Interface
-
+    internal class SortedArray : SortedContainer
     {
-        public double Add(double x)
+        public bool Add(double x)
         {
             throw new NotImplementedException();
         }
 
-        public double Count()
+        public int Count()
         {
             throw new NotImplementedException();
         }
 
-        public double[] Get(double[] index)
+        public double Get(int index)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +33,7 @@ namespace lesson_10
             throw new NotImplementedException();
         }
 
-        public double Remove(double x)
+        public bool Remove(double x)
         {
             throw new NotImplementedException();
         }
