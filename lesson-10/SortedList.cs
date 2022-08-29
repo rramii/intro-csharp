@@ -15,31 +15,49 @@ namespace lesson_10
         {
             var before = Count();
             var here = FindLocation(x);
-            _list.RemoveAt(here[0]);
+            _list.RemoveAt(here);
             return Count() < before;
         }
 
+        
         public bool Add(double x)
         {
             var before = Count();
-            _list.Append(x);
-            int[] here = FindLocation(x);
 
-            if (_list.Count >= 2)
+            _list.Add(x);
+            // Obi wan error
+            // Off by one
+            for (int i = Count() - 1; i > 0; --i)
             {
-                int[] swap = Swap((int)_list[Count() - 1], here[0]);
-                Move(swap, (int)x, here[1]);
+                var b = Get(i);
+                var a = Get(i-1);
+                if( a > b)
+                {
+                    Swap(i, i - 1);
+                    //_list[i] = a;
+                    //_list[i - 1] = b;
+                }
+                else
+                {
+                    break;
+                }
             }
+
+            //int here = FindLocation(x);
+
+            //if (_list.Count >= 2)
+            //{
+            //    int[] swap = Swap((int)_list[Count() - 1], here[0]);
+            //    Move(swap, (int)x, here[1]);
+            //}
             return Count() > before;
         }
 
-        private int[] Swap(int intruderL, int oldnumL)
+        private void Swap(int i, int j)
         {
-            intruderL = intruderL * oldnumL;
-            oldnumL = intruderL / oldnumL;
-            intruderL = intruderL / oldnumL;
-            int[] locations = { intruderL, oldnumL };
-            return locations;
+            var t = Get(i);
+            _list[i] = _list[j];
+            _list[j] = t;
         }
 
         private void Move(int[] locList, int x, int oldnum)
@@ -48,13 +66,11 @@ namespace lesson_10
             locList[1] = oldnum;
         }
 
-        private int[] FindLocation(double x)
-        {
-            int[] counter = {Count(), Count()};
-
+        private int FindLocation(double x)
+        {            
             if (Count() == 0)
             {
-                return counter;
+                return 0;
             }
 
             int low = 0;
@@ -74,12 +90,12 @@ namespace lesson_10
                     high = mid - 1;
                 }
                 else
-                {
-                    int[] idk = { mid, (int) element };
-                    return idk;
+                {                    
+                    return mid;
                 }
             }
-            return counter;
+
+            return low;
         }
 
         private int[] transfer(int[] list) => list;
