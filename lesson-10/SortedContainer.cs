@@ -16,7 +16,5 @@ namespace lesson_10
         bool Remove(double x);
 
         double Get(int index);
-
-        void Sorting();
     }
 }

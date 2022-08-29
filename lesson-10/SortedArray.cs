@@ -64,7 +64,5 @@ namespace lesson_10
         public double Max() => _array[Count() - 1];
 
         public double Min() => _array[0];
-
-        public void Sorting() => Array.Sort(_array);
     }
 }

@@ -8,21 +8,17 @@
             Fill(sl, 10);
             Print(sl);
 
-            var x = new int[] { 1, 2, 3, 4 };
-            Console.WriteLine(x[3]);
-            Console.WriteLine(sl.Get(4));
-
-
+            var x = new int[] { 1, 2, 3, 4 }; 
         }
 
         private static void Print(SortedList sl)
         {
-            List<int> new_list = new List<int>();
-            for (int i = 0; i < sl.Count(); i++)
+            Console.Write("{" + $"{sl.Get(0)}");
+            for (int i = 1; i < sl.Count(); i++)
             {
-                new_list.Append(i);
+                Console.Write($", {sl.Get(i)}");
             }
-            SortedList.Sorting(new_list);
+            Console.Write("}");
         }
 
         private static void Fill(SortedList sl, int n)
