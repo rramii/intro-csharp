@@ -8,6 +8,7 @@
             var sl = new SortedList();
             Fill(sl, 10);
             Print(sl);
+
             Fill(sl, 10);
             Print(sl);
 

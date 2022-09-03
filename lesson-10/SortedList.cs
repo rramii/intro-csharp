@@ -25,31 +25,21 @@ namespace lesson_10
             var before = Count();
 
             _list.Add(x);
-            // Obi wan error
-            // Off by one
+
             for (int i = Count() - 1; i > 0; --i)
             {
                 var b = Get(i);
                 var a = Get(i-1);
+
                 if( a > b)
                 {
                     Swap(i, i - 1);
-                    //_list[i] = a;
-                    //_list[i - 1] = b;
                 }
                 else
                 {
                     break;
                 }
             }
-
-            //int here = FindLocation(x);
-
-            //if (_list.Count >= 2)
-            //{
-            //    int[] swap = Swap((int)_list[Count() - 1], here[0]);
-            //    Move(swap, (int)x, here[1]);
-            //}
             return Count() > before;
         }
 
@@ -58,12 +48,6 @@ namespace lesson_10
             var t = Get(i);
             _list[i] = _list[j];
             _list[j] = t;
-        }
-
-        private void Move(int[] locList, int x, int oldnum)
-        {
-            locList[0] = x;
-            locList[1] = oldnum;
         }
 
         private int FindLocation(double x)
@@ -97,8 +81,6 @@ namespace lesson_10
 
             return low;
         }
-
-        private int[] transfer(int[] list) => list;
 
         public int Count() => _list.Count;
         

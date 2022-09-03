@@ -10,7 +10,7 @@
             //var vol = surface * 1e-4;
             //var price = vol * priceForLiter;
             //Console.WriteLine($"paint {shape.Name} will cost {price}");
-
+            
             var volume = shape.Area() * thickness;
             var cost = volume * priceForLiter;
             Console.WriteLine($"paint {shape.Name}--{shape.Dimensions} will cost {cost}");
