@@ -121,9 +121,24 @@ namespace lesson_11
             listBox1.Items.Clear();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void Swap(object sender, EventArgs e)
         {
+            if (listBox1.Items.Count >= 3)
+            {
+                var index = listBox1.Items.Count - 1;
+                var lastnum = listBox1.Items[index];
+                var thirdtolast = listBox1.Items[index - 2];
 
+                var a = Convert.ToInt32(lastnum);
+                var b = Convert.ToInt32(thirdtolast);
+
+                listBox1.Items[index] = b;
+                listBox1.Items[index - 2] = a;
+            }
+            else
+            {
+                label1.Text = "3 numbers needed";
+            }
         }
     }
 }
