@@ -127,13 +127,17 @@ namespace lesson_11
             {
                 var index = listBox1.Items.Count - 1;
                 var lastnum = listBox1.Items[index];
+                var beforelast = listBox1.Items[index - 1];
                 var thirdtolast = listBox1.Items[index - 2];
 
-                var a = Convert.ToInt32(lastnum);
-                var b = Convert.ToInt32(thirdtolast);
-
+                var a = Convert.ToInt32(thirdtolast);
+                var b = Convert.ToInt32(beforelast);
+                var c = Convert.ToInt32(lastnum);
+                
+                listBox1.Items[index - 2] = c;
+                listBox1.Items[index - 1] = a;
                 listBox1.Items[index] = b;
-                listBox1.Items[index - 2] = a;
+
             }
             else
             {
