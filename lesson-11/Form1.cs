@@ -42,6 +42,19 @@ namespace lesson_11
 
         private void Pushbtn(object sender, EventArgs e)
         {
+            ActualPush();
+        }
+
+        private void CheckEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                ActualPush();
+            }
+        }
+
+        private void ActualPush()
+        {
             var text = textBox1.Text;
             int number;
             if (int.TryParse(text, out number))
@@ -60,6 +73,7 @@ namespace lesson_11
         {
             excuteoperation((a,b) => a + b);
         }
+        
         private void Subtractbtn(object sender, EventArgs e)
         {
             excuteoperation((a,b) => b - a);
@@ -143,25 +157,6 @@ namespace lesson_11
             {
                 label1.Text = "3 numbers needed";
             }
-        }
-
-        private void CheckEnter(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                var text = textBox1.Text;
-                int number;
-                if (int.TryParse(text, out number))
-                {
-                    listBox1.Items.Add(number);
-                    textBox1.Text = "";
-                    label1.Text = "";
-                }
-                else
-                {
-                    label1.Text = "not a number";
-                }
-            }
-        }
+        }  
     }
 }
