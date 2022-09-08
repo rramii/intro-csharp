@@ -54,6 +54,7 @@
             this.button1.Text = "Push";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Pushbtn);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckEnter);
             // 
             // button2
             // 

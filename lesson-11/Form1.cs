@@ -144,5 +144,24 @@ namespace lesson_11
                 label1.Text = "3 numbers needed";
             }
         }
+
+        private void CheckEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                var text = textBox1.Text;
+                int number;
+                if (int.TryParse(text, out number))
+                {
+                    listBox1.Items.Add(number);
+                    textBox1.Text = "";
+                    label1.Text = "";
+                }
+                else
+                {
+                    label1.Text = "not a number";
+                }
+            }
+        }
     }
 }
