@@ -28,71 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.NumbInput = new System.Windows.Forms.ListBox();
+            this.TextInput = new System.Windows.Forms.TextBox();
+            this.Msg = new System.Windows.Forms.Label();
+            this.Output = new System.Windows.Forms.ListBox();
+            this.Stepbtn = new System.Windows.Forms.Button();
+            this.Full_OP = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // NumbInput
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button1.Location = new System.Drawing.Point(12, 172);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 63);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "push";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.NumbInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.NumbInput.FormattingEnabled = true;
+            this.NumbInput.ItemHeight = 31;
+            this.NumbInput.Location = new System.Drawing.Point(339, 12);
+            this.NumbInput.Name = "NumbInput";
+            this.NumbInput.Size = new System.Drawing.Size(227, 562);
+            this.NumbInput.TabIndex = 2;
+            this.NumbInput.SelectedIndexChanged += new System.EventHandler(this.Numbinput);
             // 
-            // button2
+            // TextInput
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button2.Location = new System.Drawing.Point(12, 273);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 63);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.TextInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.TextInput.Location = new System.Drawing.Point(17, 12);
+            this.TextInput.Multiline = true;
+            this.TextInput.Name = "TextInput";
+            this.TextInput.Size = new System.Drawing.Size(316, 564);
+            this.TextInput.TabIndex = 3;
+            this.TextInput.TextChanged += new System.EventHandler(this.Textinput);
             // 
-            // listBox1
+            // Msg
             // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 25;
-            this.listBox1.Location = new System.Drawing.Point(175, 172);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(168, 354);
-            this.listBox1.TabIndex = 2;
+            this.Msg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.Msg.Location = new System.Drawing.Point(12, 579);
+            this.Msg.Name = "Msg";
+            this.Msg.Size = new System.Drawing.Size(321, 62);
+            this.Msg.TabIndex = 4;
+            this.Msg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // Output
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.textBox1.Location = new System.Drawing.Point(17, 89);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(326, 32);
-            this.textBox1.TabIndex = 3;
+            this.Output.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.Output.FormattingEnabled = true;
+            this.Output.ItemHeight = 31;
+            this.Output.Location = new System.Drawing.Point(600, 12);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(227, 562);
+            this.Output.TabIndex = 5;
             // 
-            // label1
+            // Stepbtn
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(12, 552);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(331, 62);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
+            this.Stepbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.Stepbtn.Location = new System.Drawing.Point(339, 580);
+            this.Stepbtn.Name = "Stepbtn";
+            this.Stepbtn.Size = new System.Drawing.Size(227, 69);
+            this.Stepbtn.TabIndex = 6;
+            this.Stepbtn.Text = "Step";
+            this.Stepbtn.UseVisualStyleBackColor = true;
+            this.Stepbtn.Click += new System.EventHandler(this.Step);
+            // 
+            // Full_OP
+            // 
+            this.Full_OP.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.Full_OP.Location = new System.Drawing.Point(600, 580);
+            this.Full_OP.Name = "Full_OP";
+            this.Full_OP.Size = new System.Drawing.Size(227, 69);
+            this.Full_OP.TabIndex = 7;
+            this.Full_OP.Text = "Full sequence";
+            this.Full_OP.UseVisualStyleBackColor = true;
+            this.Full_OP.Click += new System.EventHandler(this.FullOP);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 623);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(839, 674);
+            this.Controls.Add(this.Full_OP);
+            this.Controls.Add(this.Stepbtn);
+            this.Controls.Add(this.Output);
+            this.Controls.Add(this.Msg);
+            this.Controls.Add(this.TextInput);
+            this.Controls.Add(this.NumbInput);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -101,12 +118,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox NumbInput;
+        private System.Windows.Forms.TextBox TextInput;
+        private System.Windows.Forms.Label Msg;
+        private System.Windows.Forms.ListBox Output;
+        private System.Windows.Forms.Button Stepbtn;
+        private System.Windows.Forms.Button Full_OP;
     }
 }
 

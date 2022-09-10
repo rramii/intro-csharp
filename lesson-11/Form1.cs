@@ -96,7 +96,7 @@ namespace lesson_11
 
         private void button12_Click(object sender, EventArgs e) => calc.Rotate(3);
 
-        private void CheckEnter(object sender, KeyPressEventArgs e)
+        private void CheckEnter(object sender, KeyPressEventHandler e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
