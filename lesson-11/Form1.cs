@@ -31,7 +31,6 @@ namespace lesson_11
         {
             listBox1.Items.Add(n.ToString());
         }
-
         private void popList(int n)
         {
             var items = listBox1.Items;
