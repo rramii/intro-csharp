@@ -1,0 +1,61 @@
+﻿@page "/album-search"
+
+@using BlazorWeb.Shared
+@inject HttpClient Http
+
+<h3>AlbumsForArtist</h3>
+
+<span>Artits name</span>
+
+<EditForm Model="@Name" OnSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="name" @bind-Value="Name" />
+
+    <button type="submit">Search</button>
+</EditForm>
+
+
+<h2>Albums:</h2>
+@if (albums == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+        <table class="covers">
+            <thead>
+                <tr>
+                    <th>Album Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var album in albums)
+                {
+                    <tr>
+                        <td>@album</td>                    
+                    </tr>
+                }
+            </tbody>
+        </table>
+}
+
+@code {
+
+    List<string> albums;
+    
+    var queryString = opts.Request.Query;
+    string Name = queryString[$search];
+    if (Name != null)
+    {
+        string key = Name.Split(" OR ")[Name.Split(" OR ").Length - 1];
+        albums = albums.Where(fil => fil.Id.ToString().Contains(key) || fil.Name.Contains(key));
+    }
+
+    private async void HandleValidSubmit(){        
+        albums = await Http.GetFromJsonAsync<List<string>>($"api/Albums/{Name}");
+        this.StateHasChanged();
+    }
+}
+

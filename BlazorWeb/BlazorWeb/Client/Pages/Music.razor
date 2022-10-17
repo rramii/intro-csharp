@@ -1,0 +1,39 @@
+﻿@page "/music"
+
+@using BlazorWeb.Shared
+@inject HttpClient Http
+
+<h3>Music</h3>
+
+@if (artists == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artist in artists)
+            {
+                <tr>
+                    <td>@artist.Name</td>
+                    <td>@artist.Albums</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    ArtistResponse[] artists;
+    protected override async Task OnInitializedAsync()
+    {
+        artists = await Http.GetFromJsonAsync<ArtistResponse[]>("Artists");
+    }
+}
+
