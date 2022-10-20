@@ -17,44 +17,105 @@
 </EditForm>
 
 
-<h2>Albums:</h2>
-@if (albums == null)
+<h2>artists:</h2>
+
+@if (artists == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-        <table class="covers">
+        <table class="artist">
             <thead>
                 <tr>
-                    <th>Album Title</th>
+                    <th>Artist Name</th>
+                    <th>!!</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var album in albums)
+                @foreach (var a in artists)
                 {
                     <tr>
-                        <td>@album</td>                    
+                        <td>@a.Artist</td>
+                        <td><button @onclick="@(e => AlbumOnClick(a.Id))" class="btn btn-info">Click for albums</button></td>
                     </tr>
                 }
             </tbody>
         </table>
+
 }
 
-@code {
+<h2>Albums</h2>
+@if (albums != null)
+{
+    <table class="cover">
+        <thead>
+            <tr>
+                <th>album Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in albums)
+            {
+                <tr>
+                    <td>@a</td>
+                    <td><button @onclick="@(e => AlbumOnClick(a.Id))" class="btn btn-info">Click for tracks</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
-    List<string> albums;
-    
-    var queryString = opts.Request.Query;
-    string Name = queryString[$search];
-    if (Name != null)
-    {
-        string key = Name.Split(" OR ")[Name.Split(" OR ").Length - 1];
-        albums = albums.Where(fil => fil.Id.ToString().Contains(key) || fil.Name.Contains(key));
+ <h3>Tracks</h3>
+@if (tracks != null) 
+{
+    <table class="cover">
+        <thead>
+            <tr>
+                <th>album Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in tracks)
+            {
+                <tr>
+                    <td>@a</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    string Name = "";
+    List<SearchResponse> artists;
+    List<SearchResponse> albums;
+    List<string> tracks;
+
+    //var queryString = opts.Request.Query;
+    //string Name = queryString[$search];
+    //if (Name != null)
+    //{
+    //    string key = Name.Split(" OR ")[Name.Split(" OR ").Length - 1];
+    //    albums = albums.Where(fil => fil.Id.ToString().Contains(key) || fil.Name.Contains(key));
+    //}
+
+    private async void HandleValidSubmit()
+    {        
+        artists = await Http.GetFromJsonAsync<List<SearchResponse>>($"api/Search/{Name}");
+        this.StateHasChanged();
     }
 
-    private async void HandleValidSubmit(){        
-        albums = await Http.GetFromJsonAsync<List<string>>($"api/Albums/{Name}");
+    private async void AlbumOnClick(int id)
+    {
+        albums = await Http.GetFromJsonAsync<List<SearchResponse>>($"api/albums/{id}");
+        this.StateHasChanged();
+    }
+
+    private async void TrackOnClick(int id)
+    {
+        albums = await Http.GetFromJsonAsync<List<SearchResponse>>($"api/Track/{id}");
         this.StateHasChanged();
     }
 }

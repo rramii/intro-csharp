@@ -1,4 +1,5 @@
 ﻿using BlazorWeb.Server.Data;
+using BlazorWeb.Server.Model;
 using BlazorWeb.Shared;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,7 +38,7 @@ namespace BlazorWeb.Server.Controllers
 
         // GET /<ArtistsController>/id
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string GetId(int id)
         {            
             var q = from artist in musicContext.Artist
                     where artist.ArtistId == id
@@ -45,7 +46,7 @@ namespace BlazorWeb.Server.Controllers
 
             return q.FirstOrDefault();
         }
-
+        
         // POST api/<ArtistsController>
         [HttpPost]
         public void Post([FromBody] string value)
