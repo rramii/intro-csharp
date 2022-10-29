@@ -37,7 +37,7 @@ else
                 {
                     <tr>
                         <td>@a.Artist</td>
-                        <td><button @onclick="@(e => AlbumOnClick(a.Id))" class="btn btn-info">Click for albums</button></td>
+                        <td><button @onclick="@(e => ArtistOnClick(a.Id))" class="btn btn-info">Click for albums</button></td>
                     </tr>
                 }
             </tbody>
@@ -58,7 +58,7 @@ else
             @foreach (var a in albums)
             {
                 <tr>
-                    <td>@a</td>
+                    <td>@a.Title</td>
                     <td><button @onclick="@(e => AlbumOnClick(a.Id))" class="btn btn-info">Click for tracks</button></td>
                 </tr>
             }
@@ -79,7 +79,7 @@ else
             @foreach (var a in tracks)
             {
                 <tr>
-                    <td>@a</td>
+                    <td>@a.name</td>
                 </tr>
             }
         </tbody>
@@ -90,8 +90,8 @@ else
 @code {
     string Name = "";
     List<SearchResponse> artists;
-    List<SearchResponse> albums;
-    List<string> tracks;
+    List<AlbumsResponse> albums;
+    List<TrackResponse> tracks;
 
     //var queryString = opts.Request.Query;
     //string Name = queryString[$search];
@@ -107,15 +107,15 @@ else
         this.StateHasChanged();
     }
 
-    private async void AlbumOnClick(int id)
+    private async void ArtistOnClick(int artistId)
     {
-        albums = await Http.GetFromJsonAsync<List<SearchResponse>>($"api/albums/{id}");
+        albums = await Http.GetFromJsonAsync<List<AlbumsResponse>>($"api/albums/{artistId}");
         this.StateHasChanged();
     }
 
-    private async void TrackOnClick(int id)
+    private async void AlbumOnClick(int albumId)
     {
-        albums = await Http.GetFromJsonAsync<List<SearchResponse>>($"api/Track/{id}");
+        tracks = await Http.GetFromJsonAsync<List<TrackResponse>>($"api/Track/{albumId}");
         this.StateHasChanged();
     }
 }

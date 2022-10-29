@@ -17,7 +17,7 @@ namespace BlazorWeb.Server.Controllers
         }
 
         [HttpGet("{Name}")]
-        public IEnumerable<SearchResponse> Get(string Name)
+        public IEnumerable<SearchResponse> GetArtistWith(string Name)
         {
             var q = from artist in musicContext.Artist
                     where artist.Name.Contains(Name)

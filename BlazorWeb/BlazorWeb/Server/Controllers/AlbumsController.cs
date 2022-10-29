@@ -1,4 +1,5 @@
 ﻿using BlazorWeb.Server.Data;
+using BlazorWeb.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -27,19 +28,13 @@ namespace BlazorWeb.Server.Controllers
 
         // GET api/<Albums>/5
         [HttpGet("{id}")]
-        public List<string> Get(int id)
+        public List<AlbumsResponse> GetAlbumsByArtist(int id)
         {
-            var albums = from artist in musicContext.Artist
-                    where artist.ArtistId == id
-                    select artist.Album;
+            var albums = from a in musicContext.Album
+                    where a.ArtistId == id
+                    select new AlbumsResponse(a.Title, a.AlbumId);
             
-            if (albums == null)
-            {
-                return new();
-            }
-            var result = from a in albums.Single()
-                    select a.Title;
-            return result.ToList();            
+            return albums.ToList();            
         }
 
         // POST api/<Albums>

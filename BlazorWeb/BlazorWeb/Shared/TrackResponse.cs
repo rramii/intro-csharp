@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace BlazorWeb.Shared
 {
-    public record TrackResponse(string track, int id);
+    public record TrackResponse(string name, int id);
 }

@@ -38,7 +38,7 @@ namespace BlazorWeb.Server.Controllers
 
         // GET /<ArtistsController>/id
         [HttpGet("{id}")]
-        public string GetId(int id)
+        public string GetArtitistBy(int id)
         {            
             var q = from artist in musicContext.Artist
                     where artist.ArtistId == id

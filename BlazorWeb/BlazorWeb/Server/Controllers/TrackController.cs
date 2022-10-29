@@ -18,11 +18,11 @@ namespace BlazorWeb.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<TrackResponse> Get(int id)
+        public IEnumerable<TrackResponse> GetTracksForAlbum(int id)
         {
-            var q = from Track in musicContext.Track
-                    where Track.TrackId == id
-                    select new TrackResponse(Track.Name, Track.TrackId);
+            var q = from t in musicContext.Track
+                    where t.AlbumId == id
+                    select new TrackResponse(t.Name, t.TrackId);
 
 
             return q.ToList();
